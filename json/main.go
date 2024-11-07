@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 )
-
+//method to convert struct into json
 type Person struct{
 	Name string `json:"name"`
 	Age int `json:"age"`
