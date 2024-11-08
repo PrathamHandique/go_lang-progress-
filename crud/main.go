@@ -114,8 +114,8 @@ func performUpdateRequest(){
 
 func main(){
 	fmt.Println("Hello World")
-	//performGetRequest()
-	//performPostRequest()
+	performGetRequest()
+	performPostRequest()
 	performUpdateRequest()
 
 	
