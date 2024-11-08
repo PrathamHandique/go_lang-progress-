@@ -75,10 +75,48 @@ func performPostRequest(){
 
 }
 
+func performUpdateRequest(){
+	todo :=Todo{
+		UserId:23224,
+		Id:1,
+		Title:"Hello Pratham",
+		Completed:true,
+	}
+	jsonData,err :=json.Marshal(todo) 
+	if err != nil {
+		fmt.Println("Error:", err)
+		return
+	}
+	jsonString :=string(jsonData)
+	//convert json  data to reader
+	jsonReader :=strings.NewReader(jsonString)
+	const myUrl = "https://jsonplaceholder.typicode.com/todos/1"
+	//create put request
+	req, err :=http.NewRequest(http.MethodPut,myUrl,jsonReader)
+	if err != nil {
+		fmt.Println("Error:", err)
+		return
+	}
+	req.Header.Set("Content-Type","application/json")
+	client :=http.Client{}
+	res, err :=client.Do(req)
+	if err != nil {
+		fmt.Println("Error:", err)
+		return
+	}
+	defer res.Body.Close()
+	data ,_:= ioutil.ReadAll(res.Body)
+	fmt.Println(string(data))
+
+
+	
+}
+
 func main(){
 	fmt.Println("Hello World")
-	performGetRequest()
-	performPostRequest()
+	//performGetRequest()
+	//performPostRequest()
+	performUpdateRequest()
 
 	
 }
