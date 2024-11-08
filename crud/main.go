@@ -77,7 +77,7 @@ func performPostRequest(){
 
 func main(){
 	fmt.Println("Hello World")
-	//performGetRequest()
+	performGetRequest()
 	performPostRequest()
 
 	
